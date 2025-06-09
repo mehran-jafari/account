@@ -1,0 +1,27 @@
+asgiref @ file:///home/conda/feedstock_root/build_artifacts/asgiref_1733215607532/work
+attrs==25.3.0
+certifi==2025.4.26
+charset-normalizer==3.4.2
+crispy-bootstrap5==2025.4
+Django @ file:///home/conda/feedstock_root/build_artifacts/django_1746812447015/work
+django-crispy-forms @ file:///home/conda/feedstock_root/build_artifacts/django-crispy-forms_1744534224940/work
+django-debug-toolbar==5.2.0
+django-environ==0.12.0
+djangorestframework==3.16.0
+idna==3.10
+isodate==0.7.2
+lxml==5.4.0
+olefile @ file:///home/conda/feedstock_root/build_artifacts/olefile_1734769783178/work
+Pillow @ file:///Users/runner/miniforge3/conda-bld/pillow_1630696664467/work
+platformdirs==4.3.8
+psycopg2 @ file:///Users/runner/miniforge3/conda-bld/psycopg2-split_1727892556295/work
+psycopg2-binary==2.9.10
+python-dotenv==1.1.0
+pytz==2025.2
+requests==2.32.3
+requests-file==2.1.0
+requests-toolbelt==1.0.0
+sqlparse @ file:///home/conda/feedstock_root/build_artifacts/sqlparse_1734007102193/work
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_typing_extensions_1748959427/work
+urllib3==2.4.0
+zeep==4.3.1

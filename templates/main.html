@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}صفحه اصلی{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="hero-section text-center py-5">
+            <h1 class="display-4 fw-bold mb-4">به سایت ما خوش آمدید</h1>
+            <p class="lead mb-5">این یک توضیح مختصر درباره خدمات و امکانات سایت است</p>
+            <div class="d-flex justify-content-center gap-3">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="btn btn-primary btn-lg px-4">
+                        <i class="bi bi-person-circle me-2"></i>پروفایل کاربری
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary btn-lg px-4">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>ورود به حساب
+                    </a>
+                    <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg px-4">
+                        <i class="bi bi-person-plus me-2"></i>ثبت‌نام
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-speedometer2 text-primary display-4 mb-3"></i>
+                <h3 class="card-title">امکانات پیشرفته</h3>
+                <p class="card-text">توضیح مختصر درباره این ویژگی و امکانات آن</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-shield-check text-primary display-4 mb-3"></i>
+                <h3 class="card-title">امنیت بالا</h3>
+                <p class="card-text">توضیح مختصر درباره سیاست‌های امنیتی سایت</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-headset text-primary display-4 mb-3"></i>
+                <h3 class="card-title">پشتیبانی 24/7</h3>
+                <p class="card-text">توضیح مختصر درباره خدمات پشتیبانی ما</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
