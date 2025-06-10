@@ -8,6 +8,7 @@ import logging
 # Set up logging
 logger = logging.getLogger(__name__)
 
+
 def send_verification_code(user, code):
     """
     Send verification code via SMS with rate limiting
@@ -28,26 +29,29 @@ def send_verification_code(user, code):
             logger.error("SMS credentials not configured")
             return False
 
-        sms = RemotePost()
-        footer_with_code = f"{sms_footer}\nکد: {code}"
-        cache_key = f"sms_rate_limit_{user.phone_number}"
-
         # Rate limiting check
+        cache_key = f"sms_rate_limit_{user.phone_number}"
         if cache.get(cache_key):
             logger.warning(f"SMS rate limited for {user.phone_number}")
             return False
 
-        # Send SMS
+        # Prepare and send SMS
+        sms = RemotePost(username=sms_username, password=sms_password, footer=sms_footer)
+        footer_with_code = f"{sms_footer}\nکد: {code}"
         result = sms.send_code(user.phone_number, footer_with_code)
         
+        # Process response
         try:
             if result and int(result) > 2000:
                 logger.info(f"SMS sent to {user.phone_number} | Transaction ID: {result}")
                 cache.set(cache_key, True, 60)  # 1 minute rate limit
                 return True
-            else:
-                logger.error(f"SMS failed for {user.phone_number}. Response: {result}")
-                return False
+            
+            
+            logger.error(f"SMS failed for {user.phone_number}. Response: {result}")
+            # TODO: löschen dieses print
+            print(footer_with_code)
+            return False
         except (ValueError, TypeError) as e:
             logger.error(f"Invalid server response: {result} | Error: {str(e)}")
             return False
@@ -55,6 +59,7 @@ def send_verification_code(user, code):
     except Exception as e:
         logger.exception(f"Error in send_verification_code: {str(e)}")
         return False
+
 
 def clean_auth_session(request):
     """

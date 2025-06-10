@@ -157,8 +157,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication
 AUTH_USER_MODEL = 'users.CustomUser'
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'home'
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 
 
@@ -196,10 +196,11 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # SMS Configuration
 
 SMS_CONFIG = {
-    'BASE_URL': env('SMS_BASE_URL', default="http://smspanel.trez.ir"),
-    'USERNAME': env('SMS_USERNAME', default=''),  # Empty string as default
-    'PASSWORD': env('SMS_PASSWORD', default=''),  # Empty string as default
-    'FOOTER': env('SMS_FOOTER', default='Your Company'),
+    'USERNAME': 'your_sms_username',  # نام کاربری پنل پیامک
+    'PASSWORD': 'your_sms_password',  # رمز عبور پنل پیامک
+    'FOOTER': 'YourBrand',  # امضا/پایگاه پیامک
+    'API_KEY': 'your_api_key',  # کلید API (اگر نیاز است)
+    'BASE_URL': 'http://smspanel.Trez.ir/',  # آدرس پایگاه سرویس پیامک
 }
 
 

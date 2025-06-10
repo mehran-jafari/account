@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+app_name = 'codes'
+
 urlpatterns = [
-    path('', views.code_home, name='code_home'),
+    path('verify/', views.verify_view, name='verify'),
+    path('verify-password-change/', views.verify_password_change_view, name='verify_password_change'),
 ]

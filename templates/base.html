@@ -42,17 +42,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav me-auto">
                     {% if user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'profile' %}">
+                        <a class="nav-link" href="{% url 'users:profile' %}">
                             <i class="bi bi-person me-1"></i>پروفایل
                         </a>
-                        <a class="nav-link" href="{% url 'logout' %}">
+                        <a class="nav-link" href="{% url 'users:logout' %}">
                             <i class="bi bi-box-arrow-left me-1"></i>خروج
                         </a>
                     {% else %}
-                        <a class="nav-link" href="{% url 'login' %}">
+                        <a class="nav-link" href="{% url 'users:login' %}">
                             <i class="bi bi-box-arrow-in-right me-1"></i>ورود
                         </a>
-                        <a class="nav-link" href="{% url 'register' %}">
+                        <a class="nav-link" href="{% url 'users:register' %}">
                             <i class="bi bi-person-plus me-1"></i>ثبت‌نام
                         </a>
                     {% endif %}

@@ -7,12 +7,14 @@ import time
 
 class RemotePost:
     def __init__(self, username=None, password=None, footer=None):
-        self.username = username or settings.SMS_USERNAME
-        self.password = password or settings.SMS_PASSWORD
-        self.footer = footer or settings.SMS_FOOTER
-        self.api_key = getattr(settings, 'SMS_API_KEY', '')
-        self.base_url = getattr(settings, 'SMS_BASE_URL', 'http://smspanel.Trez.ir/')
-
+        sms_config = getattr(settings, 'SMS_CONFIG', {})
+        self.username = username or sms_config.get('USERNAME', '')
+        self.password = password or sms_config.get('PASSWORD', '')
+        self.footer = footer or sms_config.get('FOOTER', '')
+        self.api_key = sms_config.get('API_KEY', '')
+        self.base_url = sms_config.get('BASE_URL', 'http://smspanel.Trez.ir/')
+    
+    
     def _generate_signature(self, params):
         """Generate HMAC signature for API requests"""
         sorted_params = '&'.join(f"{k}={quote(str(v))}" for k, v in sorted(params.items()))
